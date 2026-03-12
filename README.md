@@ -48,4 +48,5 @@ The control logic follows a simple process:
 
 
 **Final Note**
+
 This project represents a real control concept that was originally applied in an industrial setting. I recreated it in Python to document the logic and show how industrial automation ideas can be translated into software for presentation and portfolio purposes.
