@@ -5,7 +5,7 @@ PLC-Controlled Automated Cleaning Pump System
 
 
 **Overview**
-This project is a Python replication of an automated cleaning pump system that I originally developed in PLC ladder logic for my job. Since ladder logic is not easy to showcase on GitHub, I recreated the control logic in Python so I could document the project and show how the system works in a format that is easier to read and share.
+This project is a Python replication of an automated cleaning pump system that I originally developed in PLC ladder logic for my job. Since ladder logic is not easy to showcase on GitHub, I recreated the control logic in Python so I could document the project and show how the system works in a format that is easier to read and demonstrate to recruiters and hiring managers.
 
 This project came from a real issue in a vinyl manufacturing environment. When liquid is transferred using a pump, there is always a risk that leftover residue from a previous batch can contaminate the next one if the pump is not fully cleaned. In a process where color and consistency matter, even small contamination can lead to quality issues later on and result in additional recovery costs. Downtime is also a factor because the facility operates 24/7, and there are times when operator availability is limited. If someone has to step away from the rest of production to focus on this process, it can slow operations down and contribute to further downtime.
 
