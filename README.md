@@ -5,6 +5,7 @@ PLC-Controlled Automated Cleaning Pump System
 
 
 **Overview**
+
 This project is a Python replication of an automated cleaning pump system that I originally developed in PLC ladder logic for my job. Since ladder logic is not easy to showcase on GitHub, I recreated the control logic in Python so I could document the project and show how the system works in a format that is easier to read and demonstrate to recruiters and hiring managers.
 
 This project came from a real issue in a vinyl manufacturing environment. When liquid is transferred using a pump, there is always a risk that leftover residue from a previous batch can contaminate the next one if the pump is not fully cleaned. In a process where color and consistency matter, even small contamination can lead to quality issues later on and result in additional recovery costs. Downtime is also a factor because the facility operates 24/7, and there are times when operator availability is limited. If someone has to step away from the rest of production to focus on this process, it can slow operations down and contribute to further downtime.
@@ -13,6 +14,7 @@ Another issue is that when a process depends too much on human judgment, mistake
 
 
 **Purpose**
+
 The purpose of this project was to take out the middle man as much as possible and create a system that could make decisions based on preset parameters and sensor readings instead of relying only on someone to monitor it manually.
 
 The idea was for the system to:
@@ -26,6 +28,7 @@ This helps make the process more reliable, repeatable, and less dependent on man
 
 
 **Real-World Application**
+
 This logic was inspired by a real production need. In vinyl manufacturing, pumps may be used between different batches, and if any leftover material remains in the line, it can affect the next batch’s color or quality. Since these issues may not always be obvious right away, contamination can create bigger problems later in production.
 
 The goal of this system was to automate that decision-making process by using readings from the system and comparing them against preset limits. Instead of waiting on someone to decide whether the process looked clean enough, the system itself could evaluate the readings and respond accordingly.
