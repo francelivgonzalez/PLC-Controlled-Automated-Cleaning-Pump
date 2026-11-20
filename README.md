@@ -1,5 +1,5 @@
 # PLC-Controlled-Automated-Cleaning-Pump
-> Recreating industrial PLC ladder logic in readable Python—automating pump cleaning decisions to eliminate cross-batch contamination and manual guesswork.
+> Recreating industrial PLC ladder logic in readable Python- automating pump cleaning decisions to eliminate cross-batch contamination and manual guesswork.
 
 A Python simulation of an automated cleaning pump control system originally developed in PLC ladder logic for a 24/7 vinyl manufacturing environment, built to make industrial automation logic readable, testable, and easy to showcase on GitHub.
 
