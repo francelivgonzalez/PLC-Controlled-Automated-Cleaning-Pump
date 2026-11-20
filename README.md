@@ -1,55 +1,43 @@
 # PLC-Controlled-Automated-Cleaning-Pump
-This project recreates in Python an automated cleaning pump system originally developed in PLC ladder logic for my job, allowing the logic to be shared and presented on GitHub.
+> Recreating industrial PLC ladder logic in readable Python—automating pump cleaning decisions to eliminate cross-batch contamination and manual guesswork.
 
-PLC-Controlled Automated Cleaning Pump System
+A Python simulation of an automated cleaning pump control system originally developed in PLC ladder logic for a 24/7 vinyl manufacturing environment, built to make industrial automation logic readable, testable, and easy to showcase on GitHub.
 
+## What This Project Does
 
-**Overview**
+In a 24/7 vinyl manufacturing line, pumps transfer liquids between different batches. If residue remains in the line after a run, even trace contamination can ruin the next batch's color or consistency—causing quality failures, recovery costs, and production downtime. Relying on manual operator checks during busy shifts introduces human error and inconsistent judgment.
 
-This project is a Python replication of an automated cleaning pump system that I originally developed in PLC ladder logic for my job. Since ladder logic is not easy to showcase on GitHub, I recreated the control logic in Python so I could document the project and show how the system works in a format that is easier to read and demonstrate to recruiters and hiring managers.
+This project translates the original PLC control sequence into Python so the system automatically evaluates sensor readings against preset thresholds rather than waiting on manual intervention:
+1. **Safety Interlock & Start:** Verifies safe operating conditions before energizing the cleaning sequence.
+2. **Continuous Sensor Evaluation:** Compares real-time line readings against preset purity/acceptability thresholds.
+3. **Automated Routing & Retries:** Reroutes flow and repeats the cleaning cycle automatically if contamination is still detected, advancing to production readiness only when readings pass—or halting immediately on unsafe conditions or stop commands.
 
-This project came from a real issue in a vinyl manufacturing environment. When liquid is transferred using a pump, there is always a risk that leftover residue from a previous batch can contaminate the next one if the pump is not fully cleaned. In a process where color and consistency matter, even small contamination can lead to quality issues later on and result in additional recovery costs. Downtime is also a factor because the facility operates 24/7, and there are times when operator availability is limited. If someone has to step away from the rest of production to focus on this process, it can slow operations down and contribute to further downtime.
+## What I'm Focusing On
 
-Another issue is that when a process depends too much on human judgment, mistakes can happen. A person may not always catch contamination at the right time, or the decision to stop or continue may vary from one operator to another. Because of that, I wanted to design a system that could reduce that manual dependence and make the process more consistent.
+- **Eliminating Cross-Batch Contamination:** Catching leftover residue automatically before the next liquid batch enters the line.
+- **Reducing Operator Dependency:** Replacing subjective visual checks with repeatable, threshold-driven state transitions.
+- **PLC-to-Python Logic Translation:** Mirroring industrial ladder logic rungs, interlocks, and state machines in clean, readable Python.
+- **Fail-Safe Stop & Interlock Behavior:** Ensuring any unsafe condition or stop command halts the pump immediately.
+- **Portfolio-Ready Documentation:** Presenting real-world manufacturing automation in an accessible software format without exposing proprietary plant code.
 
+## How the Control Logic Is Set Up
 
-**Purpose**
+- **State & Interlock Checks:** Guards startup and active operation with safety and stop-command checks at every scan cycle.
+- **Threshold Comparator:** Evaluates simulated sensor readings against preset acceptable limits to classify clean vs. contaminated states.
+- **Flow Routing & Cycle Loop:** Controls pump start/stop states, diverts flow when residue is detected, and loops cleaning cycles until pass criteria are met.
+- **Simulation Runner:** Steps through normal, contaminated, and fault/stop scenarios so the control flow can be verified without physical PLC hardware.
 
-The purpose of this project was to take out the middle man as much as possible and create a system that could make decisions based on preset parameters and sensor readings instead of relying only on someone to monitor it manually.
+## Planned Folder Layout
 
-The idea was for the system to:
-- detect whether the liquid met acceptable conditions
-- determine whether contamination was still present
-- know when to stop, start, or reroute flow
-- repeat the cleaning cycle if needed
-- continue running only when the readings showed that conditions were acceptable
-
-This helps make the process more reliable, repeatable, and less dependent on manual intervention.
-
-
-**Real-World Application**
-
-This logic was inspired by a real production need. In vinyl manufacturing, pumps may be used between different batches, and if any leftover material remains in the line, it can affect the next batch’s color or quality. Since these issues may not always be obvious right away, contamination can create bigger problems later in production.
-
-The goal of this system was to automate that decision-making process by using readings from the system and comparing them against preset limits. Instead of waiting on someone to decide whether the process looked clean enough, the system itself could evaluate the readings and respond accordingly.
-
-
-**Why Python**
-This project was originally built in ladder logic, but because ladder logic cannot really be presented well on GitHub, I recreated it in Python. The Python version is meant to reflect the same control idea and logic flow, while making the project easier to explain, document, and share.
-
-It is not meant to replace the original PLC implementation in production. It is simply a GitHub-friendly representation of the original control logic.
-
-What the System Does
-
-The control logic follows a simple process:
-- Start when safe conditions are met.
-- Monitor the system readings.
-- Compare those readings to preset thresholds.
-- If contamination is detected, reroute or repeat the cycle.
-- If acceptable conditions are detected, continue the process.
-- Stop when unsafe conditions or stop commands occur.
-
-
-**Final Note**
-
-This project represents a real control concept that was originally applied in an industrial setting. I recreated it in Python to document the logic and show how industrial automation ideas can be translated into software for presentation and portfolio purposes.
+```text
+PLC-Controlled-Automated-Cleaning-Pump/
+├── README.md
+├── src/
+│   ├── controller.py     # Main PLC-style scan loop, interlocks, and state transitions
+│   ├── sensors.py        # Simulated line sensor readings and threshold checks
+│   └── actuators.py      # Pump and flow-rerouting valve state models
+├── configs/
+│   └── thresholds.yaml   # Preset acceptability limits and cycle retry parameters
+├── tests/
+│   └── test_cycles.py    # Clean pass, dirty retry loop, and emergency stop scenarios
+└── main.py               # Entry point to run simulated cleaning cycles
